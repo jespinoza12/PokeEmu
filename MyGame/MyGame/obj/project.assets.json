@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jespinoza\\source\\repos\\PokeEmu\\Game\\MyGame\\MyGame\\MyGame.csproj",
-      "projectName": "MyGame",
-      "projectPath": "C:\\Users\\Jespinoza\\source\\repos\\PokeEmu\\Game\\MyGame\\MyGame\\MyGame.csproj",
+      "projectUniqueName": "C:\\Users\\Jespinoza\\source\\repos\\PokeEmu\\Game\\MyGame\\MyGame\\PokeEmu.csproj",
+      "projectName": "PokeEmu",
+      "projectPath": "C:\\Users\\Jespinoza\\source\\repos\\PokeEmu\\Game\\MyGame\\MyGame\\PokeEmu.csproj",
       "packagesPath": "C:\\Users\\Jespinoza\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Jespinoza\\source\\repos\\PokeEmu\\Game\\MyGame\\MyGame\\obj\\",
       "projectStyle": "PackageReference",

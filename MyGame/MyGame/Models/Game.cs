@@ -16,7 +16,7 @@ namespace MyGame.Models
 
         public Game(string playerName, int difficulty)
         {
-            this.PlayerName = playerName;
+            this.PlayerName = playerName += "s Turn";
             this.Difficulty = difficulty;
         }
 
