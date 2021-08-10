@@ -7,28 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="CanMinimize">
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\Resources\BattleBackground.png"/>
+        <ImageBrush ImageSource="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\Resources\BattleBackground1.png"/>
     </Window.Background>
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="22" />
-        </Style>
-
-
-    </Window.Resources>
+    
     <!-- This is an example of how to use names  -->
     <Canvas x:Name="HealthBar1">
-        <ProgressBar Height="17" Width="253" Margin="100,73,440,344" Name="Hbar_1" Background="Red" Value="100"/>
-        <ProgressBar Height="17" Width="253" Margin="434,280,113,122" Name="Hbar_2" Background="Red" ValueChanged="Hbar_2_ValueChanged" Value="100"/>
-        <TextBlock Canvas.Left="471" Canvas.Top="245" Text="HP: 100/100 " TextWrapping="Wrap"/>
-        <TextBlock Canvas.Left="135" Canvas.Top="40"  Text="HP: 100/100" TextWrapping="Wrap"/>
+        <ProgressBar Height="17" Width="253" Margin="100,73,440,344" Name="Hbar_1" Background="Red" ValueChanged="Hbar_1_ValueChanged" Value="500" Minimum="0" Maximum="500"/>
+        <ProgressBar Height="17" Width="253" Margin="434,280,113,122" Name="Hbar_2" Background="Red" ValueChanged="Hbar_2_ValueChanged" Value="500" Minimum="0" Maximum="500"/>
+        <TextBlock x:Name="txtHP2" Canvas.Left="471" Canvas.Top="245" Text="HP: 100/100 " TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtHP1" Canvas.Left="135" Canvas.Top="40"  Text="HP: 100/100" TextWrapping="Wrap"/>
         <Button x:Name="HPCheck" Content="- Health" Canvas.Left="360" Canvas.Top="179" Click="HPCheck_Click"/>
         <Button x:Name="HPCheck2" Content="+ Health" Canvas.Left="358" Canvas.Top="207" Click="HPCheck2_Click"/>
         <TextBlock Canvas.Left="263" Canvas.Top="40" Text="Lvl: 50" TextWrapping="Wrap"/>
         <TextBlock Canvas.Left="611" Canvas.Top="245" Text="Lvl: 50" TextWrapping="Wrap"/>
 
-        <Grid Height="84" Width="319" Canvas.Left="464" Canvas.Top="327" Grid.Row="2" Grid.Column="2">
+        <Grid Height="84" Width="319" Canvas.Left="464" Canvas.Top="327" Grid.Row="2" Grid.Column="2" x:Name="sGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
@@ -51,15 +44,36 @@
             <Border CornerRadius="6" BorderThickness="6" BorderBrush="LightBlue" Grid.Column="2" Grid.Row="2">
                 <Button x:Name="btnQuit" Grid.Row="1" Grid.Column="1" Content="Quit" Click="btnQuit_Click" Background="LightBlue" Foreground="White"/>
             </Border>
-
-
         </Grid>
-        <TextBlock Canvas.Left="29" Canvas.Top="343" Text="{Binding PlayerName, StringFormat=Choose a move {0}}"  TextWrapping="Wrap" Height="81" Width="431" FontSize="25" FontFamily="Comic Sans MS" Foreground="White">
-            
+        
+        <Grid Height="84" Width="319" Canvas.Left="464" Canvas.Top="327" Grid.Row="2" Grid.Column="2" Visibility="Hidden" x:Name="mGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border CornerRadius="6" BorderThickness="6" BorderBrush="DarkRed">
+                <Button x:Name="btnMove1" Grid.Row="0" Grid.Column="0" Content="" Click="btnMove_click" Background="DarkRed" Foreground="White"/>
+            </Border>
+            <Border CornerRadius="6" BorderThickness="6" BorderBrush="Gold" Grid.Column="2" Grid.Row="0">
+                <Button x:Name="btnMove2" Grid.Row="0" Grid.Column="1" Content="" Click="btnMove_click" Background="Gold" Foreground="White" Height="28" VerticalAlignment="Top"/>
+            </Border>
+            <Border CornerRadius="6" BorderThickness="6" BorderBrush="LightGreen" Grid.Column="0" Grid.Row="2">
+                <Button x:Name="btnMove3" Grid.Row="1" Grid.Column="3" Content="" Click="btnMove_click" Background="LightGreen" Foreground="White"/>
+            </Border>
+            <Border CornerRadius="6" BorderThickness="6" BorderBrush="LightBlue" Grid.Column="2" Grid.Row="2">
+                <Button x:Name="btnMove4" Grid.Row="1" Grid.Column="1" Content="" Click="btnMove_click" Background="LightBlue" Foreground="White"/>
+            </Border>
+        </Grid>
+        <TextBlock Canvas.Left="29" Canvas.Top="343" Text="{Binding PlayerName, StringFormat=Choose a move {0}}"  TextWrapping="Wrap" Height="81" Width="431" FontSize="25" FontFamily="Comic Sans MS" Foreground="White" Name="txtUpdateUser">
+
         </TextBlock>
         <Image Height="235" Canvas.Left="116" Canvas.Top="150" Width="256" Source="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\PokeModels\pikachufriendly.png"/>
-        <Image Height="158" Canvas.Left="462" Canvas.Top="10" Width="220" Source="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\PokeModels\gengar2.png" />
+        <Image Height="158" Canvas.Left="462" Canvas.Top="10" Width="220" Source="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\PokeModels\gengar3.png"/>
     </Canvas>
-
-
 </Window>
