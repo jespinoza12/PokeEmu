@@ -12,12 +12,10 @@
     
     <!-- This is an example of how to use names  -->
     <Canvas x:Name="HealthBar1">
-        <ProgressBar Height="17" Width="253" Margin="100,73,440,344" Name="Hbar_1" Background="Red" ValueChanged="Hbar_1_ValueChanged" Value="500" Minimum="0" Maximum="500"/>
-        <ProgressBar Height="17" Width="253" Margin="434,280,113,122" Name="Hbar_2" Background="Red" ValueChanged="Hbar_2_ValueChanged" Value="500" Minimum="0" Maximum="500"/>
+        <ProgressBar Height="17" Width="253" Margin="100,73,440,344" Name="Hbar_1" Background="Red" Value="500" Minimum="0" Maximum="500"/>
+        <ProgressBar Height="17" Width="253" Margin="434,280,113,122" Name="Hbar_2" Background="Red" Value="500" Minimum="0" Maximum="500"/>
         <TextBlock x:Name="txtHP2" Canvas.Left="471" Canvas.Top="245" Text="HP: 100/100 " TextWrapping="Wrap"/>
         <TextBlock x:Name="txtHP1" Canvas.Left="135" Canvas.Top="40"  Text="HP: 100/100" TextWrapping="Wrap"/>
-        <Button x:Name="HPCheck" Content="- Health" Canvas.Left="360" Canvas.Top="179" Click="HPCheck_Click"/>
-        <Button x:Name="HPCheck2" Content="+ Health" Canvas.Left="358" Canvas.Top="207" Click="HPCheck2_Click"/>
         <TextBlock Canvas.Left="263" Canvas.Top="40" Text="Lvl: 50" TextWrapping="Wrap"/>
         <TextBlock Canvas.Left="611" Canvas.Top="245" Text="Lvl: 50" TextWrapping="Wrap"/>
 

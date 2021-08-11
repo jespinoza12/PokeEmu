@@ -22,13 +22,16 @@ namespace MyGame
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         public Game game;
-        int pH;
-        int p2H;
         int currentHealth1;
         int currentHealth2;
+        Random r = new Random();
+        Pokemon pikachu = new Electric("Pikachu", 180, 103, 76, 166, "Ground");
+        Pokemon gengar = new Dark("Gengar", 230, 121, 112, 202, "Ground/Ghost/Psychic/Dark");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,19 +48,14 @@ namespace MyGame
             DataContext = game;
 
             gameStart();
-            
 
-            //Game should have values set
-            
         }
 
         public int Maximum { get; set; }
 
+        //Starts Game
         private void gameStart()
         {
-            Pokemon pikachu = new Electric("Pikachu", 180, 103, 76, 166, "Ground");
-            Pokemon gengar = new Dark("Gengar", 230, 121, 112, 202, "Ground/Ghost/Psychic/Dark");
-
             currentHealth1 = gengar.hp;
             currentHealth2 = pikachu.hp;
 
@@ -67,27 +65,26 @@ namespace MyGame
             txtHP1.Text = currentHealth1 + " / " + gengar.hp;
             txtHP2.Text = currentHealth2 + "/" + pikachu.hp;
         }
-        
+        //Updates Current Health in healthBar
         public void updateCHealth()
         {
-            Pokemon pikachu = new Electric("Pikachu", 180, 103, 76, 166, "Ground");
-            Pokemon gengar = new Dark("Gengar", 230, 121, 112, 202, "Ground/Ghost/Psychic/Dark");
-            txtHP1.Text = currentHealth1 + " / " + gengar.hp;
-            txtHP2.Text = currentHealth2 + "/" + pikachu.hp;
-        }
-        //For Buttons to test health
-        private void HPCheck_Click(object sender, RoutedEventArgs e)
-        {
-            Hbar_1.Value -= 10;
-            Hbar_2.Value -= 20;
-        }
+            if (currentHealth1 <= 0)
+            {
+                txtHP1.Text = "0 / " + gengar.hp;
+            }
+            if (currentHealth2 <= 0)
+            {
+                txtHP2.Text = "0 / " + pikachu.hp;
+            }
+            else
+            {
+                txtHP1.Text = currentHealth1 + " / " + gengar.hp;
+                txtHP2.Text = currentHealth2 + "/" + pikachu.hp;
+            }
 
-        private void HPCheck2_Click(object sender, RoutedEventArgs e)
-        {
-            Hbar_2.Value += 10;
-            Hbar_2.Value += 20;
-        }
 
+        }
+        //Swaps to move menu
         private void btnFight_Click(object sender, RoutedEventArgs e)
         {
             sGrid.Visibility = Visibility.Hidden;
@@ -97,66 +94,99 @@ namespace MyGame
             btnMove3.Content = "Quick Attack";
             btnMove4.Content = "Iron Tail";
 
-        
-        }
 
+        }
+        //Check for crits or misses
+        private string critOrMiss()
+        {
+            string critOrMiss = "";
+            int rValue = r.Next(1, 101);
+            if (rValue <= 80)
+            {
+                critOrMiss = "Regular";
+            }
+            if (rValue >= 91 && rValue <= 100)
+            {
+                critOrMiss = "Miss";
+            }
+            if (rValue >= 81 && rValue <= 90)
+            {
+                critOrMiss = "Miss";
+            }
+
+            return critOrMiss;
+        }
+        //Check totalDmgDealt including defense values
+        private int totalDmgDealt(int moveDmg, int pDefense, string critOrMiss)
+        {
+            int totalDmgDealt = moveDmg - pDefense / 4;
+            if (critOrMiss == "Regular")
+            {
+                totalDmgDealt = moveDmg - pDefense / 4;
+            }
+            if (critOrMiss == "Miss")
+            {
+                totalDmgDealt = 0;
+
+            }
+            if (critOrMiss == "Crit")
+            {
+                int basicDmg = moveDmg - pDefense;
+                totalDmgDealt = basicDmg * 2;
+            }
+
+            return totalDmgDealt;
+        }
+        //Unimplimented
         private void btnSwitch_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        //Unimplimented
         private void btnBag_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        //Quits game
         private void btnQuit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        private void Hbar_2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
-        private void Hbar_1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
+        //Gets random move for cpu to choose
         private void cpuMove()
         {
             int move1Dmg = 20;
             int move2dmg = 30;
             int move3dmg = 40;
             int move4dmg = 50;
-            Random r = new Random();
             int whichMove = r.Next(1, 5);
 
             if (whichMove == 1)
             {
-                Hbar_2.Value -= move1Dmg;
-                currentHealth2 -= move1Dmg;
+                currentHealth2 -= totalDmgDealt(move1Dmg, gengar.defense, critOrMiss());
+                Hbar_2.Value = currentHealth2;
                 updateCHealth();
             }
             if (whichMove == 2)
             {
-                Hbar_2.Value -= move2dmg;
-                currentHealth2 -= move2dmg;
+                currentHealth2 -= totalDmgDealt(move2dmg, gengar.defense, critOrMiss());
+                Hbar_2.Value = currentHealth2;
                 updateCHealth();
             }
             if (whichMove == 3)
             {
-                Hbar_2.Value -= move3dmg;
-                currentHealth2 -= move3dmg;
+                currentHealth2 -= totalDmgDealt(move3dmg, gengar.defense, critOrMiss());
+                Hbar_2.Value = currentHealth2;
                 updateCHealth();
             }
             if (whichMove == 4)
             {
-                Hbar_2.Value -= move4dmg;
-                currentHealth2 -= move4dmg;
+                currentHealth2 -= totalDmgDealt(move4dmg, gengar.defense, critOrMiss());
+                Hbar_2.Value = currentHealth2;
                 updateCHealth();
             }
         }
+        //This is to check move dmg and using total dmg dealt deals dmg (Want to add speed stats to see who goes first)
         private void btnMove_click(object sender, RoutedEventArgs e)
         {
             string currentMove = (sender as Button).Name;
@@ -165,55 +195,64 @@ namespace MyGame
             {
                 case "btnMove1":
                     int dmgDealt = 80;
-                    currentHealth1 -= dmgDealt;
-                    Hbar_1.Value -= dmgDealt;
+                    currentHealth1 -= totalDmgDealt(dmgDealt, gengar.defense, critOrMiss());
+                    Hbar_1.Value = currentHealth1;
                     updateCHealth();
                     cpuMove();
                     checkForWin();
+                    sGrid.Visibility = Visibility.Visible;
+                    mGrid.Visibility = Visibility.Hidden;
                     break;
                 case "btnMove2":
                     dmgDealt = 30;
-                    currentHealth1 -= dmgDealt;
-                    Hbar_1.Value -= dmgDealt;
+                    currentHealth1 -= totalDmgDealt(dmgDealt, gengar.defense, critOrMiss());
+                    Hbar_1.Value = currentHealth1;
                     updateCHealth();
                     cpuMove();
                     checkForWin();
+                    sGrid.Visibility = Visibility.Visible;
+                    mGrid.Visibility = Visibility.Hidden;
                     break;
                 case "btnMove3":
                     dmgDealt = 40;
-                    currentHealth1 -= dmgDealt;
-                    Hbar_1.Value -= dmgDealt;
-                    updateCHealth(); 
-                    cpuMove();
-                    checkForWin();
-                    break;
-                case "btnMove4":
-                    dmgDealt = 60;
-                    currentHealth1 -= dmgDealt;
-                    Hbar_1.Value -= dmgDealt;
+                    currentHealth1 -= totalDmgDealt(dmgDealt, gengar.defense, critOrMiss());
+                    Hbar_1.Value = currentHealth1;
                     updateCHealth();
                     cpuMove();
                     checkForWin();
+                    sGrid.Visibility = Visibility.Visible;
+                    mGrid.Visibility = Visibility.Hidden;
+                    break;
+                case "btnMove4":
+                    dmgDealt = 60;
+                    currentHealth1 -= totalDmgDealt(dmgDealt, gengar.defense, critOrMiss());
+                    Hbar_1.Value = currentHealth1;
+                    updateCHealth();
+                    cpuMove();
+                    checkForWin();
+                    sGrid.Visibility = Visibility.Visible;
+                    mGrid.Visibility = Visibility.Hidden;
                     break;
             }
-                
-          
-        }
 
+
+        }
+        //Checks to see if someone won
         private void checkForWin()
         {
+
             if (Hbar_1.Value <= 0)
             {
-                txtUpdateUser.Text = "Congrat player 2 wins";
+                updateCHealth();
+                txtUpdateUser.Text = "Gengar has feighnted the winner is " + game.PlayerName;
             }
             if (Hbar_2.Value <= 0)
             {
-                txtUpdateUser.Text = "Aw boo cpu wins";
+                updateCHealth();
+                txtUpdateUser.Text = "Pikachu has feighneted the winner is CPU";
             }
         }
     }
-
-
     public abstract class Pokemon
     {
         public int hp { get; set; }
@@ -228,7 +267,7 @@ namespace MyGame
 
         public Pokemon() { }
 
-        
+
         public Pokemon(string name, int hp, int attack, int defense, int speed)
         {
             this.Name = name;
@@ -253,7 +292,7 @@ namespace MyGame
             this.weakness = weakness;
         }
     }
-    class Dark: Pokemon
+    class Dark : Pokemon
     {
         private string weakness;
         public Dark(string name, int hp, int attack, int defense, int speed, string weakness)
@@ -266,4 +305,6 @@ namespace MyGame
             this.weakness = weakness;
         }
     }
+
+   
 }

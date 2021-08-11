@@ -16,7 +16,7 @@ namespace MyGame.Models
 
         public Game(string playerName, int difficulty)
         {
-            this.PlayerName = playerName += "s Turn";
+            this.PlayerName = playerName;
             this.Difficulty = difficulty;
         }
 
@@ -30,6 +30,16 @@ namespace MyGame.Models
                 OnPropertyChanged("PlayerName");
             }
         }
+        public string Player2Name
+        {
+            get { return playerName; }
+            set
+            {
+                playerName = value;
+                OnPropertyChanged("PlayerName");
+            }
+        }
+
 
         private int difficulty;
 
