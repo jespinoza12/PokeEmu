@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MyGame.Views"
         mc:Ignorable="d"
         Title="Game Settings" Height="450" Width="400">
+        
     <Window.Background>
         <ImageBrush ImageSource="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\Resources\SSBackground.png"/>
     </Window.Background>

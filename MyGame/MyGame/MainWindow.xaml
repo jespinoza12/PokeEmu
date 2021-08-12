@@ -9,7 +9,7 @@
     <Window.Background>
         <ImageBrush ImageSource="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\Resources\BattleBackground1.png"/>
     </Window.Background>
-    
+
     <!-- This is an example of how to use names  -->
     <Canvas x:Name="HealthBar1">
         <ProgressBar Height="17" Width="253" Margin="100,73,440,344" Name="Hbar_1" Background="Red" Value="500" Minimum="0" Maximum="500"/>
@@ -34,16 +34,17 @@
                 <Button x:Name="btnFight" Grid.Row="0" Grid.Column="0" Content="Fight" Click="btnFight_Click" Background="DarkRed" Foreground="White"/>
             </Border>
             <Border CornerRadius="6" BorderThickness="6" BorderBrush="Gold" Grid.Column="2" Grid.Row="0">
-                <Button x:Name="btnBag" Grid.Row="0" Grid.Column="1" Content="Bag" Click="btnBag_Click" Background="Gold" Foreground="White"/>
+                <Button x:Name="btnBag" Grid.Row="0" Grid.Column="1" Content="Bag" Background="Gold" Foreground="White"/>
             </Border>
             <Border CornerRadius="6" BorderThickness="6" BorderBrush="LightGreen" Grid.Column="0" Grid.Row="2">
-                <Button x:Name="btnSwitch" Grid.Row="1" Grid.Column="3" Content="Pokemon" Click="btnSwitch_Click" Background="LightGreen" Foreground="White"/>
+                <Button x:Name="btnSwitch" Grid.Row="1" Grid.Column="3" Content="Pokemon" Background="LightGreen" Foreground="White"/>
             </Border>
             <Border CornerRadius="6" BorderThickness="6" BorderBrush="LightBlue" Grid.Column="2" Grid.Row="2">
                 <Button x:Name="btnQuit" Grid.Row="1" Grid.Column="1" Content="Quit" Click="btnQuit_Click" Background="LightBlue" Foreground="White"/>
             </Border>
+
         </Grid>
-        
+
         <Grid Height="84" Width="319" Canvas.Left="464" Canvas.Top="327" Grid.Row="2" Grid.Column="2" Visibility="Hidden" x:Name="mGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -68,7 +69,7 @@
                 <Button x:Name="btnMove4" Grid.Row="1" Grid.Column="1" Content="" Click="btnMove_click" Background="LightBlue" Foreground="White"/>
             </Border>
         </Grid>
-        <TextBlock Canvas.Left="29" Canvas.Top="343" Text="{Binding PlayerName, StringFormat=Choose a move {0}}"  TextWrapping="Wrap" Height="81" Width="431" FontSize="25" FontFamily="Comic Sans MS" Foreground="White" Name="txtUpdateUser">
+        <TextBlock Canvas.Left="27" Canvas.Top="327" Text="{Binding PlayerName, StringFormat=Choose a move {0}}"  TextWrapping="Wrap" Height="68" Width="432" FontSize="25" FontFamily="Comic Sans MS" Foreground="White" Name="txtUpdateUser">
 
         </TextBlock>
         <Image Height="235" Canvas.Left="116" Canvas.Top="150" Width="256" Source="C:\Users\Jespinoza\source\repos\PokeEmu\Game\MyGame\MyGame\PokeModels\pikachufriendly.png"/>
