@@ -74,8 +74,8 @@
         <TextBlock Canvas.Left="27" Canvas.Top="327" Text="{Binding PlayerName, StringFormat=Choose a move {0}}"  TextWrapping="Wrap" Height="68" Width="432" FontSize="25" FontFamily="Comic Sans MS" Foreground="White" Name="txtUpdateUser">
 
         </TextBlock>
-        <Image Height="235" Canvas.Left="116" Canvas.Top="150" Width="256" Source="PokeModels/pikachufriendly.png"/>
+        <Image x:Name="imgPika" Height="235" Canvas.Left="116" Canvas.Top="150" Width="256" Source="PokeModels/pikachufriendly.png"/>
         <Image x:Name="gif" Height="36" Canvas.Left="365" Canvas.Top="382" Width="100" gif:AnimationBehavior.SourceUri="Resources/dots_2.gif" Visibility="Hidden"/>
-        <Image Height="158" Canvas.Left="462" Canvas.Top="10" Width="220" Source="PokeModels/gengar3.png"/>
+        <Image x:Name="imgGengar" Height="158" Canvas.Left="462" Canvas.Top="10" Width="220" Source="PokeModels/gengar3.png"/>
     </Canvas>
 </Window>

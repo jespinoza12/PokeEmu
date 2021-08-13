@@ -71,6 +71,7 @@ namespace MyGame
         {
             if (currentHealth1 <= 0)
             {
+
                 currentHealth1 = 0;
                 txtHP1.Text = currentHealth1 + " / " + gengar.hp;
 
@@ -208,36 +209,39 @@ namespace MyGame
                             txtUpdateUser.Text = "Gengar attack " + critOrMis2;
                             cpuMove(critOrMis2);
                             updateCHealth();
-                            
+                           
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
                             gif.Visibility = Visibility.Hidden;
                             checkForWin();
 
                         };
+
+
                     }
                     if (check_Speed() == gengar.Name)
                     {
                         cpuMove(critOrMis2);
                         txtUpdateUser.Text = "Gengar attack " + critOrMis2;
                         gif.Visibility = Visibility.Visible;
+
                         timer.Start();
                         timer.Tick += (sender, args) =>
                         {
                             timer.Stop();
-                            txtUpdateUser.Text = "Pikachu used " + btnMove1.Content + " and it was a " + critOrMis + " attack";
+
                             currentHealth1 -= totalDmgDealt(dmgDealt, gengar.defense, critOrMis);
                             Hbar_1.Value = currentHealth1;
+                            txtUpdateUser.Text = "Pikachu used " + btnMove1.Content + " and it was a " + critOrMis + " attack";
                             updateCHealth();
-                            checkForWin();
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
                             gif.Visibility = Visibility.Hidden;
-
                             checkForWin();
+
                         };
+                        
+
                     }
                     break;
                 case "btnMove2":
@@ -260,7 +264,6 @@ namespace MyGame
   
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
                             gif.Visibility = Visibility.Hidden;
 
                             checkForWin();
@@ -281,7 +284,6 @@ namespace MyGame
                             updateCHealth();
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
                             gif.Visibility = Visibility.Hidden;
                             checkForWin();
 
@@ -310,7 +312,6 @@ namespace MyGame
                             pikachu.speed = 166;
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
                             gif.Visibility = Visibility.Hidden;
                             checkForWin();
 
@@ -338,7 +339,6 @@ namespace MyGame
                             updateCHealth();
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
                             gif.Visibility = Visibility.Hidden;
                             checkForWin();
 
@@ -356,6 +356,7 @@ namespace MyGame
                         timer.Tick += (sender, args) =>
                         {
                             timer.Stop();
+
                             txtUpdateUser.Text = "Pikachu used " + btnMove4.Content + " and it was a " + critOrMis + " attack";
                             currentHealth1 -= totalDmgDealt(dmgDealt, gengar.defense, critOrMis);
                             Hbar_1.Value = currentHealth1;
@@ -364,11 +365,12 @@ namespace MyGame
                             sGrid.Visibility = Visibility.Visible;
                             mGrid.Visibility = Visibility.Hidden;
                             gif.Visibility = Visibility.Hidden;
-
-                            txtUpdateUser.Text = "Choose a move " + game.PlayerName;
+                            
                             checkForWin();
 
                         };
+
+
                         
                     }
                     break;
